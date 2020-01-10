@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".signup">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp">
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="140dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/signn_up" />
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint="Name"
+        android:textColor="#000"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:background="@drawable/round_design"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="12dp"
+        android:inputType="textPersonName"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/et_clg"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint="College"
+        android:textColor="#000"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:background="@drawable/round_design"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="12dp"
+        android:inputType="textPersonName"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint="Enter E-mail"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:background="@drawable/round_design"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint=" Enter Password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="12dp"
+        android:inputType="textPassword"
+        android:textSize="15sp"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:background="@drawable/round_design"/>
+    <EditText
+        android:id="@+id/et_re_password"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint="Re-Enter Password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="12dp"
+        android:inputType="textPassword"
+        android:textSize="15sp"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:background="@drawable/round_design"/>
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginEnd="67dp"
+            android:background="@drawable/corner"
+            android:shadowColor="#424242"
+            android:backgroundTint="#aed581"
+            android:layout_centerInParent="true"
+            android:text="Register"/>
+</LinearLayout>
