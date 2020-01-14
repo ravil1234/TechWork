@@ -1,6 +1,8 @@
 package com.example.techwork;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,7 +15,7 @@ import com.example.techwork.Data.DbHelper;
 public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText passwrd;
-    static String mail="";
+   public static String mail="";
     static int count=0;
     LinearLayout ll;
     DbHelper dbHelper=new DbHelper(this);
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          email=(EditText)findViewById(R.id.login_email_edit);
          passwrd=(EditText)findViewById(R.id.login_password_edit);
+        SharedPreferences prefs=getSharedPreferences("login",Context.MODE_PRIVATE);
+        email.setText(prefs.getString("email:",""));
+        passwrd.setText(prefs.getString("password:",""));
          ll=findViewById(R.id.left_swipe);
         ll.setOnTouchListener(new OnSwipe(MainActivity.this)
         {
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
     public void signup(View v)
     {
@@ -41,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void login(View V)
     {
+        SharedPreferences s=getSharedPreferences("Login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor E=s.edit();
+        E.putString("email:",email.getText().toString());
+        E.putString("password:",passwrd.getText().toString());
+        E.apply();
         SQLiteDatabase db=dbHelper.getReadableDatabase();
         Cursor c=db.rawQuery("select * from "+ Contract.Entry.TABLE_NAME+" where "+Contract.Entry.COLUMN_EMAIL +"=? and "
                 + Contract.Entry.COLUMN_PASSWORD +"=?",new String[]{email.getText().toString().trim(),passwrd.getText().toString().trim()});
@@ -50,11 +62,17 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
+
             count=1;
             mail=email.getText().toString();
             Toast.makeText(this,"LOGGED IN!",Toast.LENGTH_SHORT).show();
             Intent intent =new Intent(this,Dashboard.class);
             startActivity(intent);
         }
+    }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
     }
 }
