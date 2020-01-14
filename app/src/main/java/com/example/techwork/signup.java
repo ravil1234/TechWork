@@ -1,6 +1,8 @@
 package com.example.techwork;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.techwork.Data.Contract;
+import com.example.techwork.Data.DbHelper;
 
 public class signup extends AppCompatActivity {
 
@@ -36,6 +39,17 @@ public class signup extends AppCompatActivity {
         String email = eemail.getText().toString().trim();
         String passwrd= epassword.getText().toString().trim();
         String passwrd2= repassword.getText().toString().trim();
+        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(college)||TextUtils.isEmpty(email))
+        {
+
+            Toast.makeText(this,"INVALID ENTRIES!",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(checkmail(email))
+        {
+            return;
+        }
         if(!passwrd.equals(passwrd2))
         {
             Toast.makeText(this,"Error Password mismatched!",
@@ -48,13 +62,7 @@ public class signup extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(college)||TextUtils.isEmpty(email))
-        {
 
-            Toast.makeText(this,"INVALID ENTRIES!",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
         ContentValues values = new ContentValues();
         values.put(Contract.Entry.COLUMN_NAME, name);
         values.put(Contract.Entry.COLUMN_EMAIL,email);
@@ -69,5 +77,21 @@ public class signup extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
         finish();
+    }
+    DbHelper dbHelper=new DbHelper(this);
+    public boolean checkmail(String email)
+    {
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+        Cursor c=db.rawQuery("select * from "+ Contract.Entry.TABLE_NAME+" where "+Contract.Entry.COLUMN_EMAIL +"=?"
+                ,new String[]{email});
+        if(c.getCount()<=0)
+        {
+            return false;
+        }
+        else
+        {
+            Toast.makeText(this,"email is already registered!",Toast.LENGTH_SHORT).show();
+            return true;
+        }
     }
 }
