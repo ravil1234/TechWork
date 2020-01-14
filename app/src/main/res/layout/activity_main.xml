@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/left_swipe"
     android:orientation="vertical"
     android:background="@drawable/background_logo"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +83,7 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="login"
             android:text="LOGIN"
             android:gravity="center_horizontal|center_vertical"
             android:layout_below="@id/login_password_edit"
@@ -114,6 +116,12 @@
             android:shadowColor="#424242"
             android:backgroundTint="#aed581"
             />
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="51dp"
+            android:layout_below="@+id/sign_up"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp"
+            android:background="@drawable/swipe_logo"></ImageView>
     </RelativeLayout>
-
 </LinearLayout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TechWork</string>
+    <string name="upcoming_work"> Upcoming Workshop</string>
+    <string name="archives">Archives</string>
 </resources>

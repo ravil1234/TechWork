@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.techwork">
 
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".signup"></activity>
+        <activity android:name=".Register_Workshop"></activity>
+        <activity android:name=".saved_workshop" />
+        <activity android:name=".Archives" />
+        <activity android:name=".Upcoming_Workshop" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".signup" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".Data.Provider"
+            android:authorities="com.example.techwork"
+            android:exported="false" />
     </application>
 
 </manifest>
